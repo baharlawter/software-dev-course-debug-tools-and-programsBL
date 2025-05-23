@@ -32,19 +32,26 @@ function generateReceipt(cartItems, total) {
     receipt += `${item.name}: $${item.price}\n`;
   });
 
-  if (typeof total !== "number" || isNaN(total))
-   else{ receipt += `Total: $${total.toFixed(2)}`};
+  if (typeof total !== "number" || isNaN(total)) {
+    receipt += "Total: Invalid total\n";
+  } else {
+    receipt += `Total: $${total.toFixed(2)}`;
+  }
+  return receipt;
 }
 
 // Debugging entry point
 console.log("Starting shopping cart calculation...");
 const total = calculateTotal(cart);
-const discountedTotal = applyDiscount(total, 0.2); 
+const discountedTotal = applyDiscount(total, 0.2);
 const receipt = generateReceipt(cart, discountedTotal);
-const totalElem.document.getElementById("total");
-if(totalElem){
-  recieptElem.textContent=reciept;
-};
-
+const totalElem = document.getElementById("total");
+if (totalElem) {
+  totalElem.textContent = `Total: $${discountedTotal}`;
+}
+const receiptElem = document.getElementById("receipt");
+if (receiptElem) {
+  receiptElem.textContent = receipt;
+}
 document.getElementById("total").textContent = `Total: $${discountedTotal}`;
 document.getElementById("receipt").textContent = receipt;
