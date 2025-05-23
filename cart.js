@@ -39,7 +39,7 @@ function generateReceipt(cartItems, total) {
   }
   return receipt;
 }
-
+c;
 // Debugging entry point
 console.log("Starting shopping cart calculation...");
 const total = calculateTotal(cart);
